@@ -8,28 +8,34 @@
 
 <br>
 
-## 特性
+## 介绍
 
-- [Vue 3](https://cn.vuejs.org/), [Vite](https://cn.vitejs.dev/), [pnpm](https://pnpm.io/), [esbuild](https://esbuild.github.io/getting-started/) 
+- 基于[Vue 3](https://cn.vuejs.org/), [Vite](https://cn.vitejs.dev/), [pnpm](https://pnpm.io/)进行项目搭建
 
-- [Typescript](https://www.typescriptlang.org/) 的类型声明和检查
+- Vite使用[ esbuild ](https://esbuild.github.io/getting-started/) 进行打包管理
 
-- [基于文件的路由](./src/pages) 和 [布局系统](./src/layouts)
+- 使用[ Typescript ](https://www.typescriptlang.org/) 进行类型声明和检查
 
-- [API 自动加载](https://github.com/antfu/unplugin-auto-import) 和 [组件自动化加载](./src/components)
+- 基于文件的[ vite-plugin-pages ](https://github.com/hannoeru/vite-plugin-pages) [vue-router](https://router.vuejs.org/)管理和 [ vite-plugin-vue-layouts ](https://github.com/johncampionjr/vite-plugin-vue-layouts) 布局管理
 
-- [使用 Pinia 的状态管理](https://pinia.vuejs.org)
+- 使用[ unplugin-auto-import ](https://github.com/antfu/unplugin-auto-import) 和[unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 进行自动化管理
+
+- 使用[ axios ](https://www.axios-http.cn/docs/intro)进行网络请求
+
+- 使用[ Pinia ](https://pinia.vuejs.org)进行状态管理
+
+- 使用[ SCSS ](https://www.sass.hk/guide/)进行样式扩展
+
+- 加入[ VueUse ](https://vueuse.org/guide/) Composition API 工具以便于简化开发工作
+
+- 加入 [ vue-i18n ](./locales) 进行国际化进行翻译
 
 
 - 🎨 [UnoCSS](https://github.com/unocss/unocss) - 高性能且极具灵活性的即时原子化 CSS 引擎
 
 - 😃 [各种图标集为你所用](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
 
-- 🌍 [I18n 国际化开箱即用](./locales)
 
-- 🔥 使用 [新的 `<script setup>` 语法](https://github.com/vuejs/rfcs/pull/227)
-
-- 🤙🏻 默认开启 [响应性语法糖](https://vuejs.org/guide/extras/reactivity-transform.html)
 
 
 - 🦔 使用 [critters](https://github.com/GoogleChromeLabs/critters) 的生成关键 CSS
@@ -49,12 +55,6 @@
 
 ### 插件
 
-- [Vue Router](https://github.com/vuejs/router)
-  - [`vite-plugin-pages`](https://github.com/hannoeru/vite-plugin-pages) - 以文件系统为基础的路由
-  - [`vite-plugin-vue-layouts`](https://github.com/JohnCampionJr/vite-plugin-vue-layouts) - 页面布局系统
-- [Pinia](https://pinia.vuejs.org) - 直接的, 类型安全的, 使用 Composition API 的轻便灵活的 Vue 状态管理
-- [`unplugin-vue-components`](https://github.com/antfu/unplugin-vue-components) - 自动加载组件
-- [`unplugin-auto-import`](https://github.com/antfu/unplugin-auto-import) - 直接使用 Composition API 等，无需导入
 - [Vue I18n](https://github.com/intlify/vue-i18n-next) - 国际化
   - [`unplugin-vue-i18n`](https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n) - Vue I18n 的 Vite 插件
 - [VueUse](https://github.com/antfu/vueuse) - 实用的 Composition API 工具合集
@@ -64,7 +64,6 @@
 
 ### 编码风格
 
-- 使用 Composition API 地 [`<script setup>` SFC 语法](https://github.com/vuejs/rfcs/pull/227)
 - [ESLint](https://eslint.org/) 配置为 [@antfu/eslint-config](https://github.com/antfu/eslint-config), 单引号, 无分号.
 
 ### 开发工具
