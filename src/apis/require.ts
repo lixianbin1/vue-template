@@ -10,6 +10,9 @@ axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 //请求拦截器
 axios.interceptors.request.use((config) => {
   //缓存接口
+  if (config.url !== '/api/agreement/details'){
+    config.signal = abort.add({ url: config.url, method: config.method })
+  }
   abort.judge({ url: config.url || '', method: config.method || ''})
   //添加身份验证
   // if (config.headers.Authorization === undefined) {

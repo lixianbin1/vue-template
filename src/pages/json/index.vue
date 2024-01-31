@@ -1,12 +1,7 @@
 <template>
-  <button type="button" @click="goBack">Back</button>
+  <GoBack/>
 </template>
 <script setup lang="ts">
-const router = useRouter()
-const goBack=()=>{
-  router.back()
-}
-</script>
 
-<style></style>
+</script>
   
