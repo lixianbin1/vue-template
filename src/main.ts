@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './style.css'
+import '@/assets/styles/index.css'
 import App from './App.vue'
 import { createRouter,createWebHashHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'

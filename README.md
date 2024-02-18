@@ -16,7 +16,7 @@
 
 - 使用[ Typescript ](https://www.typescriptlang.org/) 进行类型声明和检查
 
-- 基于文件的[ vite-plugin-pages ](https://github.com/hannoeru/vite-plugin-pages) [vue-router](https://router.vuejs.org/)管理和 [ vite-plugin-vue-layouts ](https://github.com/johncampionjr/vite-plugin-vue-layouts) 布局管理
+- 基于文件的[ vite-plugin-pages ](https://github.com/hannoeru/vite-plugin-pages) [vue-router](https://router.vuejs.org/)路由管理和 [ vite-plugin-vue-layouts ](https://github.com/johncampionjr/vite-plugin-vue-layouts) 布局管理
 
 - 使用[ unplugin-auto-import ](https://github.com/antfu/unplugin-auto-import) 和[unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 进行自动化管理
 
@@ -33,6 +33,43 @@
 <br>
 
 > Vitesse 需要 Node 版本 >=14.18
+> Vue3 只支持原生支持 ES2015 的浏览器
+
+## 介绍
+
+### 项目结构
+
+```m
+|—— docs/       //项目的文档介绍
+|—— public/     //公用静态资源
+|—— src/
+  |—— apis/        //各类封装的api接口
+  |—— assets/      //公共样式和静态资源
+  |—— components/  //各类封装的组件
+  |—— language/    //各类语言文件
+  |—— layouts/     //自定义的模板
+  |—— modules/     //各类导入的模块
+  |—— pages/       //自动生成路由的文件
+  |—— stores/      //pinia存储的全局数据
+  |—— App.vue
+  |—— auto-imports.d.ts
+  |—— components.d.ts
+  |—— main.ts       //入口文件
+|—— .env.development//环境变量
+|—— .env.production //环境变量
+|—— .gitignore      //Git配置文件
+|—— .npmrc          //npm配置文件
+|—— build-test.sh   //build-test打包测试脚本
+|—— index.html
+|—— package.json
+|—— pnpm-lock.yaml
+|—— README.en.md
+|—— README.md
+|—— serve.js        //build-test打包测试服务器脚本
+|—— tsconfig.json   //typeScript的配置
+|—— tsconfig.node.json
+|—— vite.config.ts  //vite的各项配置
+```
 
 ## 使用
 

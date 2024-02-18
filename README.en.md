@@ -3,58 +3,98 @@
 <br>
 
 <p align='center'>
-<b>English</b> | <a href="./README.md">简体中文</a>
-
+<b>English</b> | <a href="./README.en.md">Chinese Simplified</a>
 </p>
 
 <br>
 
-## Features
+## Introduction
 
- - Based on [Vue 3](https://cn.vuejs.org/), [Vite](https://cn.vitejs.dev/), [pnpm](https://pnpm.io/)Carry out project construction
+- Build a project based on [Vue 3](https://cn.vuejs.org/), [Vite](https://cn.vitejs.dev/), [pnpm](https://pnpm.io/).
 
- - Vite uses [esbuild](https://esbuild.github.io/getting-started/)Perform packaging management
+- Vite uses [ esbuild ](https://esbuild.github.io/getting-started/) for package management
 
- - Using [Typescript](https://www.typescriptlang.org/)Make type declarations and checks
+- Use Typescript (https://www.typescriptlang.org/) for type declaration and checking
 
- - File based [vite plugin pages](https://github.com/hannoeru/vite-plugin-pages)[vue router](https://router.vuejs.org/)Management and [vite plugin vue layouts](https://github.com/johncampionjr/vite-plugin-vue-layouts)Layout management
+- File-based [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages) [vue-router](https://router.vuejs.org/) route management and [vite-plugin-vue-layouts]( https://github.com/johncampionjr/vite-plugin-vue-layouts) Layout management
 
- - Using [unplugin auto import](https://github.com/antfu/unplugin-auto-import)And [unplugin vue components](https://github.com/unplugin/unplugin-vue-components)Perform automated management
+- Use [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) and [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) for automated management
 
- - Using [axios](https://www.axios-http.cn/docs/intro)Make network requests-Using [Pinia](https://pinia.vuejs.org)Perform status management
+- Use [ axios ] (https://www.axios-http.cn/docs/intro) to make a network request
 
- - Using [SCSS](https://www.sass.hk/guide/)Perform style extension-Join [VueUse](https://vueuse.org/guide/)Composition API tool for simplifying development work
+- Use [ Pinia ] (https://pinia.vuejs.org) for status management
 
- - Join [vue-i18n] (./locals) for internationalization and translation
+- Use SCSS (https://www.sass.hk/guide/) for style extension
+
+- Added the [ VueUse ](https://vueuse.org/guide/) Composition API tool to simplify development
+
+- Add [ vue-i18n ](./locales) for internationalization and translation
 
 <br>
 
-> Vitesse requires Node >=14.18
+> Vitesse requires Node version >=14.18
+> Vue3 only supports browsers that natively support ES2015
 
-## Usage
+## Introduction
+
+### Project structure
+
+```m
+|—— docs/       //Documentation for the project
+|—— public/     //public static resources
+|—— src/
+  |—— APIS/         //Various encapsulated API interfaces
+  |—— assets/       //common style and static assets
+  |—— components/   //Components in various packages
+  |—— language/     //all kinds of language files
+  |—— layouts/      //Customized template
+  |—— modules/      //Imported modules
+  |—— pages/        //A file that automatically generates routes
+  |—— stores/       //pinia
+  |—— App.vue
+  |—— auto-imports.d.ts
+  |—— components.d.ts
+  |—— main.ts       //Entry file
+|—— .env.development//environment variable
+|—— .env.production //environment variable
+|—— .gitignore      //Git configuration file
+|—— .npmrc          //npm configuration file
+|—— build-test.sh   //build-test
+|—— index.html
+|—— package.json
+|—— pnpm-lock.yaml
+|—— README.en.md
+|—— README.md
+|—— serve.js        //build-test to package the test server script
+|—— tsconfig.json   //typeScript
+|—— tsconfig.node.json
+|—— vite.config.ts  //vite
+```
+
+## Use
 
 ### Development
 
-Just run and visit http://localhost:3333
+Just execute the following command to see it in http://localhost:3333
 
 ```bash
 pnpm dev
 ```
 
-### Build
+### build
 
-To build the App, run
+To build the app, you only need to execute the following command
 
 ```bash
 pnpm build
 ```
 
-And you will see the generated file in `dist` that ready to be served.
+Then you'll see the 'dist' folder for publishing generated.
 
-To build the test, you need to execute the following command
+To build a test, run the following command:
 
-```Bash
-Pnpm build test
+```bash
+pnpm build-test
 ```
 
-Then you will see that the 'dist' folder for publishing is generated. And execute simulated static file server execution
+Then you'll see the 'dist' folder for publishing generated. and execute an execution that simulates a static file server
