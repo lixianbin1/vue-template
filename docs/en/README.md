@@ -1,0 +1,29 @@
+---
+home: true
+title: Home
+heroImage: /img/logo01.png
+actions:
+  - text: Get started quickly
+    link: get-started.html
+    type: primary
+
+  - text: GitHub
+    link: https://github.com/lixianbin1/template-vue3-test
+    type: secondary
+
+features:
+  - title: Simplicity is paramount
+    details: Use Markdown to describe the use of templates
+  - title: Vue Driver
+    details: Build the project based on Vue 3, Vite, and pnpm
+  - title: Type detection
+    details: Use Typescript for type declaration and checking
+  - title: Automated import
+    Details: Use unplugin-auto-import and unplugin-vue-components for automated import management.
+  - title: Automated routing
+    details: file-based vite-plugin-pages vue-router route management and vite-plugin-vue-layouts layout management
+  - title: Packer
+    details: The default packager is Vite, which also supports Webpack. Choose the one you like!
+
+footer: MIT Licensed | Copyright © 2024-present lixianbin
+---
