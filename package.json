@@ -1,0 +1,15 @@
+{
+  "name": "template-vue3-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lixianbin1/template-vue3-test.git",
+  "author": "李贤斌 <xianbin.me@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress dev docs",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build docs"
+  },
+  "devDependencies": {
+    "vuepress": "^1.9.10"
+  }
+}
