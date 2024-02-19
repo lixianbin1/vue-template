@@ -4,7 +4,7 @@
 set -e
 
 # 生成静态文件
-npm run build
+pnpm run build
 
 # 进入生成的文件夹
 cd docs/.vuepress/dist
@@ -18,5 +18,3 @@ git push -f git@github.com:lixianbin1/template-vue3-test.git master:gh-pages
 # 删除dist文件夹
 cd ../
 rm -rf dist
-
-cd -
