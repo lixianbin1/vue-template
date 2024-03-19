@@ -4,6 +4,9 @@ import path from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts';
 
@@ -12,7 +15,7 @@ export default defineConfig({
     vue(),
     Layouts(),
     AutoImport({ 
-      imports: [ //需要全局自动导入的模块
+      imports: [ //需要全局自动导入的模块API
         'vue',
         'vue-i18n',
         'vue-router',
@@ -20,22 +23,32 @@ export default defineConfig({
       ],
       dts: 'src/auto-imports.d.ts', //自动生成的导入文件路径
       dirs: [ //需要自动导入的模块文件
-        'src/composables',
-        'src/stores',
+        'src/common/',
+        'src/stores/',
       ],
       vueTemplate: true, //在vue模板中开启
-      resolvers: [ //自定义解析器，兼容unplugin-vue-components
-
+      resolvers: [
+        ElementPlusResolver(),
       ],
     }),
     Components({
-      extensions: ['vue'], //需要全局自动导入的模块
+      extensions: ['vue'], //需要全局自动导入的模块组件
       include: [/\.vue$/, /\.vue\?vue/], //包含匹配文件
       exclude: [/[\\/]\.git[\\/]/], //过滤匹配文件
       dts: 'src/components.d.ts', //自动生成的导入文件路径
-      resolvers: [ //自定义解析器
-
+      dirs: [ //需要自动导入的模块文件
+        'src/components',
       ],
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver({
+          prefix: 'icon',
+          enabledCollections: ['ep'],
+        }),
+      ],
+    }),
+    Icons({
+      autoInstall: true,
     }),
     Pages({
       extensions: ['vue'], //有效的文件后缀
