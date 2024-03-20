@@ -1,2 +1,10 @@
 login:
-  Welcome: 'Welcome to the template vue3 test'
+  Welcome: 'Welcome to the template vue3'
+menu:
+  DataSubmission : "DataSubmission"
+  DataCorrection : "DataCorrection"
+  Encryption: "Encryption"
+  EncryptionInfo: "EncryptionInfo"
+  AdminPortal: "AdminPortal"
+  UserManagement: "UserManagement"
+  CertificateManagement: "CertificateManagement"

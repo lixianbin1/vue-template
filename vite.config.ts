@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Unocss from 'unocss/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Pages from 'vite-plugin-pages'
@@ -50,6 +51,7 @@ export default defineConfig({
     Icons({
       autoInstall: true,
     }),
+    Unocss(),
     Pages({
       extensions: ['vue'], //有效的文件后缀
       dirs: 'src/pages', //指定文件根目录

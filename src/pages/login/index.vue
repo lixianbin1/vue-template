@@ -18,6 +18,7 @@
 </template>
 <script setup lang="ts">
   import { vBlur } from '@/common/directive';
+  import { Userlogin } from '@/apis'
   const router = useRouter()
   const name = ref('Welcome to vue3 telplate')
 
@@ -29,8 +30,12 @@
   const username = ref('Admin')
   const password = ref('12345678')
   const login=()=>{
-    localStorage.setItem('userToken','token')
-    router.push('/')
+    Userlogin(loginForm).then((data)=>{
+      const userInfo = useUserInfo()
+      sessionStorage.setItem('userToken',data.userToken)
+      userInfo.value = data
+      router.push('/')
+    })
   }
 </script>
 <style scoped lang="scss">
@@ -41,3 +46,8 @@
   height: 100%;
 }
 </style>
+
+<route lang="yaml">
+  meta:
+    layout: login
+</route>

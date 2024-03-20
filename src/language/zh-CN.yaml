@@ -1,2 +1,10 @@
 login:
-  Welcome: 'Welcome to Credit Reference Platform Common Module'
+  Welcome: '欢迎使用 template vue3'
+menu:
+  DataSubmission : "数据提交"
+  DataCorrection : "数据更正"
+  Encryption: "加密"
+  EncryptionInfo: "加密信息"
+  AdminPortal: "管理门户"
+  UserManagement: "用户管理"
+  CertificateManagement: "证书管理"

@@ -12,3 +12,8 @@ export const useLocaleUser = createGlobalState(()=>{
     name:"Lxb"
   })
 })
+
+//用户信息
+export const useUserInfo = createGlobalState(()=>useStorage('userInfo',{},sessionStorage))
+
+export const useGlobalMenu = createGlobalState(()=>useStorage('userMenu',{},sessionStorage))

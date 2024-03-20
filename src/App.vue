@@ -12,7 +12,7 @@
   router.beforeEach((to, from, next) => {
     console.log(to)
     //判断是否登录
-    const token = localStorage.getItem('userToken')
+    const token = sessionStorage.getItem('userToken')
     const toPath = to.path.split('/')[1]
     if(!token && to.name !== 'login'){
       router.replace('/login')

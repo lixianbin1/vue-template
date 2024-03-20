@@ -13,3 +13,15 @@ export const HomeJson = function (params?:object):Promise<HomeResponse> {
     params,
   })
 }
+
+interface LoginResponse {
+  username: string;
+  password: string;
+}
+export const Userlogin = function (params?:object):Promise<LoginResponse> {
+  return require({
+    url: `${network}/${auto}/login.json`,
+    method: 'post',
+    params,
+  })
+}
