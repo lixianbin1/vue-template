@@ -12,7 +12,7 @@
   "dependencies": {
     "@vueuse/core": "^10.7.2",
     "axios": "^1.6.5",
-    "crypto-js": "4.1.1",
+    "crypto-js": "4.2.0",
     "file-saver": "^2.0.5",
     "element-plus": "^2.6.1",
     "imgzoom-li": "^0.9.4",
