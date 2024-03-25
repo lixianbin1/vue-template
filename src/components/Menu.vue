@@ -1,6 +1,4 @@
 <script setup lang="ts">
-
-const { t } = useI18n()
 const isCollapse = ref(true) // 控制menu的展开和收缩
 // 用户信息显示
 const isShow = reactive({
@@ -10,8 +8,7 @@ const isShow = reactive({
 // 设置当前菜单的默认选中
 const route = useRoute()
 const state = reactive({
-  // path: `${route.fullPath}`,
-  // usetextTermsOfUse: usetextTermsOfUse.value,
+  path: `${route.fullPath}`,
 })
 
 const onCurrents = () => {
@@ -36,7 +33,7 @@ watch(() => router.currentRoute.value,
 const userInfo = useUserInfo()
 const roleShow = ref(0)  //权限等级
 watch(() => userInfo.value, (val) => {
-  let roles = val.role || '';
+  let roles = '';
   if (roles.includes('admin') || roles.includes('user')){
     roleShow.value = 1
   }
@@ -78,9 +75,6 @@ const isLogin = () => {
   }
 }
 isLogin()
-const onTermsOfUse = () => {
-
-}
 </script>
 
 <template>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const router = useRouter()
 
 const goToUser = () => {
 
@@ -8,8 +7,6 @@ const goToUser = () => {
 const ToPage = () => {
 
 }
-
-const useInfo = reactive({})
 </script>
 
 <template>

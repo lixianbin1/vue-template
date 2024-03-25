@@ -62,11 +62,9 @@
 </div>
 </template>
 <script setup lang="ts">
-  import { vBlur } from '@/common/directive';
-  import { Userlogin } from '@/apis'
-  const router = useRouter()
-  const name = ref('Welcome to vue3 telplate')
-
+import {LoginData} from '@/common/InstanceType'
+import { Userlogin } from '@/apis'
+const router = useRouter()
 const { t } = useI18n()
 const VITE_version = ref('v2024.03.25')
 const state = reactive({
@@ -79,7 +77,7 @@ const state = reactive({
     password: '123456',
   },
 })
-const useRules = reactive<FormRules>({
+const useRules = reactive({
   ptCode: [
     { required: true, message: 'Please enter participant code', trigger: 'blur' },
   ],
@@ -88,31 +86,11 @@ const useRules = reactive<FormRules>({
   ],
 })
 
-watch(() => state.form.password, (newPassword) => {
-  change.oldPwd = newPassword
-})
-
-
-// 点击登录按钮
-const onSubmit = (formEl: FormInstance | undefined) => {
-  if (!formEl)
-    return
-  formEl.validate((valid) => {
-    if (valid)
-      upToPassword()
-    else
-      return false
-  })
-}
-
 // 登录账户
-const loginRef = ref<FormInstance>();
-const user = reactive({
-  Token:{}
-})
+const loginRef = ref();
 const userInfo = useUserInfo()
 const onLogin = async () => {
-  Userlogin().then((data)=>{
+  Userlogin().then((data:LoginData)=>{
     sessionStorage.setItem('userToken',data.userToken)
     userInfo.value = data
     router.push('./')

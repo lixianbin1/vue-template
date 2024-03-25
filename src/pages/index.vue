@@ -8,7 +8,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-const router = useRouter()
 const item = {
   date: '2016-05-02',
   name: 'Tom',
@@ -16,10 +15,6 @@ const item = {
 }
 const tableData = ref(Array.from({ length: 20 }).fill(item))
 
-const exit = ()=>{
-  router.push('login')
-  sessionStorage.removeItem('userToken')
-}
 </script>
 
 <style scoped>

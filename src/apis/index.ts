@@ -15,8 +15,7 @@ export const HomeJson = function (params?:object):Promise<HomeResponse> {
 }
 
 interface LoginResponse {
-  username: string;
-  password: string;
+  userToken: string;
 }
 export const Userlogin = function (params?:object):Promise<LoginResponse> {
   return require({
