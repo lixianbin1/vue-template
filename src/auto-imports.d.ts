@@ -335,16 +335,12 @@ declare global {
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
-    readonly CheckFileSize: UnwrapRef<typeof import('./common/toolMethod')['CheckFileSize']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly ElMessage: UnwrapRef<typeof import('element-plus/es')['ElMessage']>
-    readonly ElNotification: UnwrapRef<typeof import('element-plus/es')['ElNotification']>
     readonly SignOut: UnwrapRef<typeof import('./common/index')['SignOut']>
     readonly adminList: UnwrapRef<typeof import('./stores/menu')['adminList']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
-    readonly compressToBlob: UnwrapRef<typeof import('./common/toolMethod')['compressToBlob']>
-    readonly compressionAndEncryption: UnwrapRef<typeof import('./common/toolMethod')['compressionAndEncryption']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
     readonly computedEager: UnwrapRef<typeof import('@vueuse/core')['computedEager']>
@@ -364,29 +360,13 @@ declare module 'vue' {
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
-    readonly decryptData: UnwrapRef<typeof import('./common/toolMethod')['decryptData']>
-    readonly decryptFile: UnwrapRef<typeof import('./common/encryption')['decryptFile']>
-    readonly decryptP12File: UnwrapRef<typeof import('./common/encryption')['decryptP12File']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
-    readonly downloadSymKey: UnwrapRef<typeof import('./common/toolMethod')['downloadSymKey']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly encryptData: UnwrapRef<typeof import('./common/toolMethod')['encryptData']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
-    readonly fileDecryptionReplacement: UnwrapRef<typeof import('./common/toolMethod')['fileDecryptionReplacement']>
-    readonly formatTime: UnwrapRef<typeof import('./common/toolMethod')['formatTime']>
-    readonly getChecksum: UnwrapRef<typeof import('./common/toolMethod')['getChecksum']>
-    readonly getCommonFileName: UnwrapRef<typeof import('./common/toolMethod')['getCommonFileName']>
-    readonly getCrtEFFECTIVE_DATE: UnwrapRef<typeof import('./common/encryption')['getCrtEFFECTIVE_DATE']>
-    readonly getCrtEFFECTIVE_DATE_TXT: UnwrapRef<typeof import('./common/encryption')['getCrtEFFECTIVE_DATE_TXT']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
-    readonly getFile_name: UnwrapRef<typeof import('./common/toolMethod')['getFile_name']>
-    readonly getPrivate: UnwrapRef<typeof import('./common/encryption')['getPrivate']>
-    readonly getSerialNumber: UnwrapRef<typeof import('./common/toolMethod')['getSerialNumber']>
-    readonly getSessionStorageSimKey: UnwrapRef<typeof import('./common/toolMethod')['getSessionStorageSimKey']>
-    readonly getSymmetricKey: UnwrapRef<typeof import('./common/encryption')['getSymmetricKey']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -396,7 +376,6 @@ declare module 'vue' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
-    readonly judgeExecutableFileSuffix: UnwrapRef<typeof import('./common/toolMethod')['judgeExecutableFileSuffix']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
@@ -438,15 +417,12 @@ declare module 'vue' {
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly resolveRef: UnwrapRef<typeof import('@vueuse/core')['resolveRef']>
     readonly resolveUnref: UnwrapRef<typeof import('@vueuse/core')['resolveUnref']>
-    readonly setSessionStorageSimKey: UnwrapRef<typeof import('./common/toolMethod')['setSessionStorageSimKey']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
-    readonly startAndEndDay: UnwrapRef<typeof import('./common/toolMethod')['startAndEndDay']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
     readonly templateRef: UnwrapRef<typeof import('@vueuse/core')['templateRef']>
-    readonly theLastMoment: UnwrapRef<typeof import('./common/toolMethod')['theLastMoment']>
     readonly throttledRef: UnwrapRef<typeof import('@vueuse/core')['throttledRef']>
     readonly throttledWatch: UnwrapRef<typeof import('@vueuse/core')['throttledWatch']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
@@ -632,8 +608,6 @@ declare module 'vue' {
     readonly userList: UnwrapRef<typeof import('./stores/menu')['userList']>
     readonly userStore: UnwrapRef<typeof import('./stores/index')['userStore']>
     readonly vBlur: UnwrapRef<typeof import('./common/directive')['vBlur']>
-    readonly validateLocalTime: UnwrapRef<typeof import('./common/toolMethod')['validateLocalTime']>
-    readonly validateQueryTime: UnwrapRef<typeof import('./common/toolMethod')['validateQueryTime']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchArray: UnwrapRef<typeof import('@vueuse/core')['watchArray']>
     readonly watchAtMost: UnwrapRef<typeof import('@vueuse/core')['watchAtMost']>
@@ -654,16 +628,12 @@ declare module 'vue' {
 }
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    readonly CheckFileSize: UnwrapRef<typeof import('./common/toolMethod')['CheckFileSize']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly ElMessage: UnwrapRef<typeof import('element-plus/es')['ElMessage']>
-    readonly ElNotification: UnwrapRef<typeof import('element-plus/es')['ElNotification']>
     readonly SignOut: UnwrapRef<typeof import('./common/index')['SignOut']>
     readonly adminList: UnwrapRef<typeof import('./stores/menu')['adminList']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
-    readonly compressToBlob: UnwrapRef<typeof import('./common/toolMethod')['compressToBlob']>
-    readonly compressionAndEncryption: UnwrapRef<typeof import('./common/toolMethod')['compressionAndEncryption']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
     readonly computedEager: UnwrapRef<typeof import('@vueuse/core')['computedEager']>
@@ -683,29 +653,13 @@ declare module '@vue/runtime-core' {
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
-    readonly decryptData: UnwrapRef<typeof import('./common/toolMethod')['decryptData']>
-    readonly decryptFile: UnwrapRef<typeof import('./common/encryption')['decryptFile']>
-    readonly decryptP12File: UnwrapRef<typeof import('./common/encryption')['decryptP12File']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
-    readonly downloadSymKey: UnwrapRef<typeof import('./common/toolMethod')['downloadSymKey']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly encryptData: UnwrapRef<typeof import('./common/toolMethod')['encryptData']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
-    readonly fileDecryptionReplacement: UnwrapRef<typeof import('./common/toolMethod')['fileDecryptionReplacement']>
-    readonly formatTime: UnwrapRef<typeof import('./common/toolMethod')['formatTime']>
-    readonly getChecksum: UnwrapRef<typeof import('./common/toolMethod')['getChecksum']>
-    readonly getCommonFileName: UnwrapRef<typeof import('./common/toolMethod')['getCommonFileName']>
-    readonly getCrtEFFECTIVE_DATE: UnwrapRef<typeof import('./common/encryption')['getCrtEFFECTIVE_DATE']>
-    readonly getCrtEFFECTIVE_DATE_TXT: UnwrapRef<typeof import('./common/encryption')['getCrtEFFECTIVE_DATE_TXT']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
-    readonly getFile_name: UnwrapRef<typeof import('./common/toolMethod')['getFile_name']>
-    readonly getPrivate: UnwrapRef<typeof import('./common/encryption')['getPrivate']>
-    readonly getSerialNumber: UnwrapRef<typeof import('./common/toolMethod')['getSerialNumber']>
-    readonly getSessionStorageSimKey: UnwrapRef<typeof import('./common/toolMethod')['getSessionStorageSimKey']>
-    readonly getSymmetricKey: UnwrapRef<typeof import('./common/encryption')['getSymmetricKey']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -715,7 +669,6 @@ declare module '@vue/runtime-core' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
-    readonly judgeExecutableFileSuffix: UnwrapRef<typeof import('./common/toolMethod')['judgeExecutableFileSuffix']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
@@ -757,15 +710,12 @@ declare module '@vue/runtime-core' {
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly resolveRef: UnwrapRef<typeof import('@vueuse/core')['resolveRef']>
     readonly resolveUnref: UnwrapRef<typeof import('@vueuse/core')['resolveUnref']>
-    readonly setSessionStorageSimKey: UnwrapRef<typeof import('./common/toolMethod')['setSessionStorageSimKey']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
-    readonly startAndEndDay: UnwrapRef<typeof import('./common/toolMethod')['startAndEndDay']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
     readonly templateRef: UnwrapRef<typeof import('@vueuse/core')['templateRef']>
-    readonly theLastMoment: UnwrapRef<typeof import('./common/toolMethod')['theLastMoment']>
     readonly throttledRef: UnwrapRef<typeof import('@vueuse/core')['throttledRef']>
     readonly throttledWatch: UnwrapRef<typeof import('@vueuse/core')['throttledWatch']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
@@ -951,8 +901,6 @@ declare module '@vue/runtime-core' {
     readonly userList: UnwrapRef<typeof import('./stores/menu')['userList']>
     readonly userStore: UnwrapRef<typeof import('./stores/index')['userStore']>
     readonly vBlur: UnwrapRef<typeof import('./common/directive')['vBlur']>
-    readonly validateLocalTime: UnwrapRef<typeof import('./common/toolMethod')['validateLocalTime']>
-    readonly validateQueryTime: UnwrapRef<typeof import('./common/toolMethod')['validateQueryTime']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchArray: UnwrapRef<typeof import('@vueuse/core')['watchArray']>
     readonly watchAtMost: UnwrapRef<typeof import('@vueuse/core')['watchAtMost']>

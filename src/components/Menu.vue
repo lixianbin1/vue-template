@@ -74,9 +74,7 @@ const isLogin = () => {
   if (!token || token == 'null') {
     isShow.show = false
   }else {
-    console.log(menuList)
     setMenu(userInfo.value.userRole)
-    console.log(userInfo.value.userRole,menuList)
   }
 }
 isLogin()
@@ -128,6 +126,7 @@ const onTermsOfUse = () => {
 .el-aside .v-menu{
   color: #fff;
   font-size: 24px;
+  width: var(--el-menu-icon-width);
   height: 56px;
   margin-left: 20px;
   cursor: pointer;

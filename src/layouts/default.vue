@@ -22,7 +22,6 @@ const screenSize = reactive({
   height: `${(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 60}px`,
 })
 onMounted(() => {
-  console.log(screenSize)
   window.onresize = () => {
     return (() => {
       screenSize.height = `${(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 60}px`

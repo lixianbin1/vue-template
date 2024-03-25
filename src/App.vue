@@ -6,11 +6,9 @@
   //import {useRoute,useRouter} from 'vue-router'
   const route = useRoute()
   const router = useRouter()
-  console.log(route,router)
 
   //路由转跳前业务逻辑
   router.beforeEach((to, from, next) => {
-    console.log(to)
     //判断是否登录
     const token = sessionStorage.getItem('userToken')
     const toPath = to.path.split('/')[1]

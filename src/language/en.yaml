@@ -1,10 +1,12 @@
 login:
   Welcome: 'Welcome to the template vue3'
+  Account : "Account"
+  Credit: "user name"
+  UserID: "Userid"
+  Password: "Password"
+  Login: "Login"
+  FontTitle : "© the Industry Associations XXXXXX. All rights reserved."
 menu:
-  DataSubmission : "DataSubmission"
-  DataCorrection : "DataCorrection"
-  Encryption: "Encryption"
-  EncryptionInfo: "EncryptionInfo"
-  AdminPortal: "AdminPortal"
-  UserManagement: "UserManagement"
-  CertificateManagement: "CertificateManagement"
+  PageOne : "Page One"
+  PageTwo : "Page Two"
+  PageTwoInfo : "Info"

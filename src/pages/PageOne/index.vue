@@ -1,6 +1,6 @@
 <template>
   <div class="head">
-    <h1 style="font-size: 20px;margin-bottom: 10px;">Encryption</h1>
+    <h1>Page One</h1>
   </div>
 </template>
 

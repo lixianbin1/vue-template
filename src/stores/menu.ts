@@ -1,37 +1,32 @@
-// @unocss-include
+// 公共页面
 const common = [
   {
-    index: '/DataSubmission',
-    icon: 'i-grommet-icons:document-update',
-    title: 'menu.DataSubmission',
-  },
-  {
-    index: '/DataCorrection',
-    icon: 'i-carbon:change-catalog',
-    title: 'menu.DataCorrection',
+    index: '/PageOne',
+    icon: 'i-carbon:bot',
+    title: 'menu.PageOne',
   },
 ]
 
-// user
+// user权限
 export const userList = [
   ...common,
 ]
 
-// admin
+// admin权限
 export const adminList = [
   ...common,
   {
-    index: '/Encryption',
-    icon: 'i-material-symbols:credit-score-outline',
-    title: 'menu.Encryption',
+    index: '/PageTwo',
+    icon: 'i-carbon:battery-half',
+    title: 'menu.PageTwo',
     children: [
       {
-        index: '/Encryption',
-        title: 'menu.Encryption',
+        index: '/PageTwo',
+        title: 'menu.PageTwo',
       },
       {
-        index: '/Encryption/info',
-        title: 'menu.EncryptionInfo',
+        index: '/PageTwo/info',
+        title: 'menu.PageTwoInfo',
       },
     ],
   },

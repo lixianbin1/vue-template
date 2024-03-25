@@ -1,4 +1,4 @@
-<h1 align='center'>template-vue3-test</h1>
+<h1 align='center'>template-vue3</h1>
 
 <br>
 

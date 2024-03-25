@@ -27,7 +27,6 @@ axios.interceptors.response.use((config) => {
   // 更新身份验证
   // if (config.headers.authorization && config.headers.authorization !== 'null') {
   // }
-  console.log(config)
   if (config.status === 200 || config.status === 204){
     return Promise.resolve(config)
   }else{

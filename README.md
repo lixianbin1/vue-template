@@ -1,4 +1,4 @@
-<h1 align='center'>template-vue3-test</h1>
+<h1 align='center'>template-vue3</h1>
 
 <br>
 
@@ -29,6 +29,8 @@
 - 加入[ VueUse ](https://vueuse.org/guide/) Composition API 工具以便于简化开发工作
 
 - 加入 [ vue-i18n ](./locales) 进行国际化进行翻译
+
+- 加入 [ unplugin-icons ] 进行图标管理和自动导入. 可以使用[iconify](https://icon-sets.iconify.design/) 里面的任意图标
 
 <br>
 
