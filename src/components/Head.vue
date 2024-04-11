@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const { t } = useI18n()
-
+const router = useRouter()
 const goToUser = () => {
 
 }
 const ToPage = () => {
-
+  router.push('/')
 }
 </script>
 
