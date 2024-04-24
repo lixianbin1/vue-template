@@ -1,12 +1,7 @@
 <template>
 <div id="login">
   <el-header class="header" flex items-center>
-    <h1 class="title" flex-1 text-18px font-800>
-      {{ t('login.Welcome') }}
-    </h1>
-    <div class="lang" flex flex-1 justify-end>
-      <LanguageButton />
-    </div>
+    <Head />
   </el-header>
   <el-main class="main">
     <div v-loading="state.loadon" class="login_box">
@@ -88,11 +83,14 @@ const useRules = reactive({
 
 // 登录账户
 const loginRef = ref();
+const {loginSwitch,loginStatus} = useGlobalState()
 const userInfo = useUserInfo()
 const onLogin = async () => {
   Userlogin().then((data:LoginData)=>{
     sessionStorage.setItem('userToken',data.userToken)
     userInfo.value = data
+    loginSwitch()
+    console.log(loginStatus.value)
     router.push('./')
   })
 }

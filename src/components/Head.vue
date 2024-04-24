@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const router = useRouter()
+const {loginStatus} = useGlobalState()
 const goToUser = () => {
 
 }
@@ -16,10 +17,10 @@ const ToPage = () => {
     </h1>
   </div>
   <div style="flex:3" class="user">
-    <el-button class="userinfo" link @click="goToUser">
+    <el-button class="userinfo" link @click="goToUser" v-show="loginStatus">
       <el-icon i-carbon:user-avatar />
     </el-button>
-    <el-button class="signout" type="danger" link @click="SignOut">
+    <el-button class="signout" type="danger" link @click="SignOut" v-show="loginStatus">
       <el-icon i-carbon:logout />
     </el-button>
     <LanguageButton />

@@ -1,8 +1,15 @@
+import Message from '~icons/carbon/send-alt'
+import Book from '~icons/carbon/notebook-reference'
+import Collect from '~icons/carbon/star'
+import Staging from '~icons/carbon/volume-block-storage'
+
+console.log(Message)
+
 // 公共页面
 const common = [
   {
     index: '/PageOne',
-    icon: 'i-carbon:bot',
+    icon: Message,
     title: 'menu.PageOne',
   },
 ]
@@ -17,7 +24,7 @@ export const adminList = [
   ...common,
   {
     index: '/PageTwo',
-    icon: 'i-carbon:battery-half',
+    icon: Book,
     title: 'menu.PageTwo',
     children: [
       {

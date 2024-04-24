@@ -1,10 +1,12 @@
 //设置全局状态
 export const useGlobalState = createGlobalState(()=>{
-  const num = ref(0)
-  const add = ()=>{
-    num.value++
+  let status = !!sessionStorage.getItem('userToken')
+  const loginStatus = ref(false)
+  loginStatus.value = status
+  const loginSwitch = ()=>{
+    loginStatus.value=!loginStatus.value
   }
-  return {num,add}
+  return {loginStatus,loginSwitch}
 })
 //持久存储
 export const useLocaleUser = createGlobalState(()=>{

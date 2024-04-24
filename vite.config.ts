@@ -44,7 +44,7 @@ export default defineConfig({
         ElementPlusResolver(),
         IconsResolver({
           prefix: 'icon',
-          enabledCollections: ['ep'],
+          enabledCollections: ['ep','carbon'],
         }),
       ],
     }),
