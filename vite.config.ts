@@ -90,7 +90,7 @@ export default defineConfig({
     //配置scss的全局变量（可选）
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "./src/assets/styles/mixin.scss";',
+        additionalData: '@use "./src/assets/styles/mixin.scss";',
       },
     },
   },
