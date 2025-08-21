@@ -6,7 +6,7 @@
   </el-table>
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import { ref } from 'vue'
 const item = {
   date: '2016-05-02',

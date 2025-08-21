@@ -22,7 +22,6 @@ export default defineConfig({
         'vue-router',
         '@vueuse/core',
       ],
-      dts: 'src/auto-imports.d.ts', //自动生成的导入文件路径
       dirs: [ //需要自动导入的模块文件
         'src/common/',
         'src/stores/',
@@ -36,7 +35,6 @@ export default defineConfig({
       extensions: ['vue'], //需要全局自动导入的模块组件
       include: [/\.vue$/, /\.vue\?vue/], //包含匹配文件
       exclude: [/[\\/]\.git[\\/]/], //过滤匹配文件
-      dts: 'src/components.d.ts', //自动生成的导入文件路径
       dirs: [ //需要自动导入的模块文件
         'src/components',
       ],

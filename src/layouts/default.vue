@@ -5,7 +5,6 @@
         <Head />
       </el-header>
       <el-container>
-        <Menu />
         <el-scrollbar>
           <el-main :style="screenSize">
             <RouterView />
@@ -16,7 +15,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup >
 const screenSize = reactive({
   width: '100%',
   height: `${(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 60}px`,

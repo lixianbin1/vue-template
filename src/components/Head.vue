@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 const { t } = useI18n()
 const router = useRouter()
 const {loginStatus} = useGlobalState()

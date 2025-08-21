@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 import abort from './abort'
 
 //全局配置
@@ -39,8 +39,8 @@ axios.interceptors.response.use((config) => {
   return Promise.reject(error)
 })
 // 封装的require请求
-export const require = <T>(option:AxiosRequestConfig) => {
-  return new Promise<T>((fulfill, reject) => {
+export const require = (option) => {
+  return new Promise((fulfill, reject) => {
     axios(option).then((res) => {
       fulfill(res.data)
     }).catch((rej) => {

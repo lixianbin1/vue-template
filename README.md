@@ -14,8 +14,6 @@
 
 - Vite使用[ esbuild ](https://esbuild.github.io/getting-started/) 进行打包管理
 
-- 使用[ Typescript ](https://www.typescriptlang.org/) 进行类型声明和检查
-
 - 基于文件的[ vite-plugin-pages ](https://github.com/hannoeru/vite-plugin-pages) [vue-router](https://router.vuejs.org/)路由管理和 [ vite-plugin-vue-layouts ](https://github.com/johncampionjr/vite-plugin-vue-layouts) 布局管理
 
 - 使用[ unplugin-auto-import ](https://github.com/antfu/unplugin-auto-import) 和[unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 进行自动化管理
@@ -54,9 +52,9 @@
   |—— pages/       //自动生成路由的文件
   |—— stores/      //pinia存储的全局数据
   |—— App.vue
-  |—— auto-imports.d.ts
-  |—— components.d.ts
-  |—— main.ts       //入口文件
+  |—— auto-imports.d.js
+  |—— components.d.js
+  |—— main.js       //入口文件
 |—— .env.development//环境变量
 |—— .env.production //环境变量
 |—— .gitignore      //Git配置文件
@@ -64,13 +62,10 @@
 |—— build-test.sh   //build-test打包测试脚本
 |—— index.html
 |—— package.json
-|—— pnpm-lock.yaml
 |—— README.en.md
 |—— README.md
 |—— serve.js        //build-test打包测试服务器脚本
-|—— tsconfig.json   //typeScript的配置
-|—— tsconfig.node.json
-|—— vite.config.ts  //vite的各项配置
+|—— vite.config.js  //vite的各项配置
 ```
 
 ## 使用
