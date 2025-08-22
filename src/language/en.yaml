@@ -1,5 +1,5 @@
 login:
-  Welcome: 'Welcome to the template vue3'
+  Welcome: 'Welcome to the vue-template'
   Account : "Account"
   Credit: "user name"
   UserID: "Userid"

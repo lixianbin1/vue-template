@@ -8,7 +8,12 @@ import router from '@/modules/router'
 import pinia from '@/modules/pinia'
 import i18 from '@/modules/i18n'
 import imgzoom from 'imgzoom-li'
+
 imgzoom.init()
+const mock = import.meta.env.VITE_APP_MOCK
+if (mock === 'MOCK') {
+	import('@/mock/index')
+}
 
 createApp(App)
 .use(i18)

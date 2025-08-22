@@ -1,6 +1,6 @@
 //取消焦点 指令
 export const vBlur = {
-  mounted(el:any) { 
+  mounted(el) { 
     el.addEventListener("focus", () => {
     el.blur();
     });

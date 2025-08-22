@@ -26,6 +26,7 @@ export default defineConfig({
         'src/common/',
         'src/stores/',
       ],
+      dts: false,
       vueTemplate: true, //在vue模板中开启
       resolvers: [
         ElementPlusResolver(),
@@ -38,6 +39,7 @@ export default defineConfig({
       dirs: [ //需要自动导入的模块文件
         'src/components',
       ],
+      dts: false,
       resolvers: [
         ElementPlusResolver(),
         IconsResolver({
@@ -69,14 +71,13 @@ export default defineConfig({
     open:true,
     port:8080,
     host:"0.0.0.0",
-    proxy: { //设置代理
-      '/api': { 
-        target: 'http://localhost:8087/', //本地
-        // target: 'http://xxx.xxx.xxx.xxx:8087/',
-        changeOrigin: true, // 是否跨域
-        rewrite: path => path.replace('/^\/api/', '/api'),
-      },
-    },
+    // proxy: { //设置代理
+    //   '/api': { 
+    //     target: 'http://localhost:7070/', //本地
+    //     changeOrigin: true, // 是否跨域
+    //     rewrite: path => path.replace('/^\/api/', '/api'),
+    //   },
+    // },
   },
   resolve: {
     alias: {
@@ -88,7 +89,7 @@ export default defineConfig({
     //配置scss的全局变量（可选）
     preprocessorOptions: {
       scss: {
-        additionalData: '@use "./src/assets/styles/mixin.scss";',
+        additionalData: '@use "@/assets/styles/mixin.scss";',
       },
     },
   },
