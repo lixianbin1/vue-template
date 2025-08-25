@@ -1,58 +1,67 @@
-import axios from 'axios'
-import abort from './abort'
+import axios from 'axios';
+import abort from './abort';
+import {router} from '../modules/router';
 
-//全局配置
-axios.defaults.timeout = 3 * 60 * 1000 //设置超时
-axios.defaults.withCredentials = false //表示跨域请求时是否需要使用凭证
-  //跨域配置
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
-axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
-//请求拦截器
-axios.interceptors.request.use((config) => {
-  //缓存接口
-  abort.judge({ url: config.url || '', method: config.method || ''})
-  //添加身份验证
-  // if (config.headers.Authorization === undefined) {
+// 全局配置
+axios.defaults.timeout = 3 * 60 * 1000; // 设置超时
+axios.defaults.withCredentials = false; // 表示跨域请求时是否需要使用凭证
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*';
 
-  // }
-  return config
-}, (error) => {
-  return Promise.reject(error.data.error.message)
-})
+// 请求拦截器
+axios.interceptors.request.use(
+  (config) => {
+    // 缓存接口
+    abort.judge({ url: config.url || '', method: config.method || '' });
 
-//响应拦截器
-axios.interceptors.response.use((config) => {
-  //清除缓存接口
-  abort.remove({ url: config.config.url || '', method: config.config.method || '' })
-  // 更新身份验证
-  // if (config.headers.authorization && config.headers.authorization !== 'null') {
-  // }
-  if (config.status === 200 || config.status === 204){
-    return Promise.resolve(config)
-  }else{
-    return Promise.reject(config)
+    // 添加身份验证
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
-}, (error) => {
-  if (axios.isCancel(error)){
-    return Promise.reject(false)
-  }
-  return Promise.reject(error)
-})
-// 封装的require请求
-export const require = (option) => {
-  return new Promise((fulfill, reject) => {
-    axios(option).then((res) => {
-      fulfill(res.data)
-    }).catch((rej) => {
-      if (rej.response){
-        reject(rej.response)
-      }else if (rej.require){
-        reject(rej.require)
-      }else{
-        reject(rej.message)
-      }
-    })
-  })
-}
+);
 
-export default require
+// 响应拦截器
+axios.interceptors.response.use(
+  (response) => {
+    // 清除缓存接口
+    abort.remove({ url: response.config.url || '', method: response.config.method || '' });
+    return response;
+  },
+  (error) => {
+    // 处理 401 和 403 错误
+    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+      localStorage.removeItem('token');
+      router.push({ path: '/login' });
+      return Promise.reject(error);
+    }
+    // 处理其他错误
+    return Promise.reject(error);
+  }
+);
+
+// 封装的请求方法
+export const request = (option) => {
+  return new Promise((resolve, reject) => {
+    axios(option)
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        if (err.response) {
+          reject(err.response);
+        } else if (err.request) {
+          reject(err.request);
+        } else {
+          reject(err.message);
+        }
+      });
+  });
+};
+
+export default request;

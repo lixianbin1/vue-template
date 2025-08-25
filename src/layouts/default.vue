@@ -5,6 +5,9 @@
         <Head />
       </el-header>
       <el-container>
+        <el-aside style="width: 200px;">
+          <Menu />
+        </el-aside>
         <el-scrollbar>
           <el-main :style="screenSize">
             <RouterView />
@@ -16,6 +19,7 @@
 </template>
 
 <script setup >
+console.log('default.vue')
 const screenSize = reactive({
   width: '100%',
   height: `${(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 60}px`,

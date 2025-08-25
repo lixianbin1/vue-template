@@ -71,13 +71,13 @@ export default defineConfig({
     open:true,
     port:8080,
     host:"0.0.0.0",
-    // proxy: { //设置代理
-    //   '/api': { 
-    //     target: 'http://localhost:7070/', //本地
-    //     changeOrigin: true, // 是否跨域
-    //     rewrite: path => path.replace('/^\/api/', '/api'),
-    //   },
-    // },
+    proxy: { //设置代理
+      '/api': { 
+        target: 'http://localhost:8888/', //本地
+        changeOrigin: true, // 是否跨域
+        rewrite: path => path.replace('/^\/api/', '/api'),
+      },
+    },
   },
   resolve: {
     alias: {

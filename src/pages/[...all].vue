@@ -1,11 +1,12 @@
-<script setup >
-</script>
-
 <template>
   <div>
     404
   </div>
 </template>
+
+<script setup >
+
+</script>
 
 <route lang="yaml">
   mate:

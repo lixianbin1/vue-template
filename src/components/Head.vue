@@ -1,15 +1,3 @@
-<script setup >
-const { t } = useI18n()
-const router = useRouter()
-const {loginStatus} = useGlobalState()
-const goToUser = () => {
-
-}
-const ToPage = () => {
-  router.push('/')
-}
-</script>
-
 <template>
   <div style="flex:7" flex items-center>
     <h1 class="title" font-bold text-center @click="ToPage">
@@ -26,6 +14,30 @@ const ToPage = () => {
     <LanguageButton />
   </div>
 </template>
+
+<script setup >
+import { UserLgout } from '@/apis/user';
+const { t } = useI18n()
+const router = useRouter()
+
+const loginStatus = computed(() => {
+  return localStorage.getItem('token')
+})
+
+console.log(loginStatus)
+const goToUser = () => {
+
+}
+const ToPage = () => {
+  router.push('/')
+}
+
+const SignOut = async() => {
+  const data = await UserLgout()
+  localStorage.removeItem('token')
+  router.push('/login')
+}
+</script>
 
 <style scoped lang="scss">
 .user{

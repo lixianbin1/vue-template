@@ -13,8 +13,24 @@ export const Userlogin = function (data) {
 
 export const UserInfo = function (params) {
   return require({
-    url: `${network}/${auto}/user/login`,
+    url: `${network}/${auto}/user/info`,
     method: 'GET',
+    params,
+  })
+}
+
+export const UserLgout = function (params) {
+  return require({
+    url: `${network}/${auto}/user/exit`,
+    method: 'GET',
+    params,
+  })
+}
+
+export const DynamicMenu = function (params) {
+  return require({
+    url: `${network}/${auto}/dynamic/menu`,
+    method: 'get',
     params,
   })
 }

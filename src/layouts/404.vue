@@ -1,7 +1,3 @@
-<script setup >
-
-</script>
-
 <template>
   <main flex justify-center items-center style="height:100%;background:#ccc;">
     <el-card w-450px style="text-align: center;padding-bottom: 20px;margin-bottom: 100px;position: relative;border-radius: 20px;">
@@ -14,6 +10,10 @@
     </el-card>
   </main>
 </template>
+
+<script setup >
+  
+</script>
 
 <style>
 .backbutton{
