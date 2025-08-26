@@ -11,6 +11,22 @@ export const Userlogin = function (data) {
   })
 }
 
+export const UserList = function (params) {
+  return require({
+    url: `${network}/${auto}/user/list`,
+    method: 'GET',
+    params,
+  })
+}
+
+export const UserAdd = function (data) {
+  return require({
+    url: `${network}/${auto}/user/create`,
+    method: 'POST',
+    data,
+  })
+}
+
 export const UserInfo = function (params) {
   return require({
     url: `${network}/${auto}/user/info`,
@@ -27,10 +43,10 @@ export const UserLgout = function (params) {
   })
 }
 
-export const DynamicMenu = function (params) {
+export const UserDelete = function (data) {
   return require({
-    url: `${network}/${auto}/dynamic/menu`,
-    method: 'get',
-    params,
+    url: `${network}/${auto}/user/delete`,
+    method: 'POST',
+    data,
   })
 }

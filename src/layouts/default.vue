@@ -5,9 +5,7 @@
         <Head />
       </el-header>
       <el-container>
-        <el-aside style="width: 200px;">
-          <Menu />
-        </el-aside>
+        <Menu />
         <el-scrollbar>
           <el-main :style="screenSize">
             <RouterView />

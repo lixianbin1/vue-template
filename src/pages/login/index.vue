@@ -46,7 +46,7 @@ const toLogin = async () => {
     Email: loginForm.value.Email,
     Password: loginForm.value.Password,
   });
-  if(res.status == 200){
+  if(res.code == 200){
     localStorage.setItem('token', res.token);
     const userInfo = await UserInfo();
     console.log(userInfo);

@@ -15,7 +15,6 @@ const item = {
 }
 const tableData = ref(Array.from({ length: 20 }).fill(item))
 
-console.log(111111111)
 </script>
 
 <style scoped>

@@ -1,26 +1,27 @@
 <script setup>
 
-const props = defineProps()
+const props = defineProps(['data'])
 const { t } = useI18n()
+const ItemData = ref(props.data)
 </script>
 
 <template>
-  <el-sub-menu v-if="props.data.children" :index="props.data.index">
+  <el-sub-menu v-if="ItemData.children?.length" :index="ItemData.index">
     <template #title>
-      <el-icon v-if="props.data.icon">
-        <component :is="props.data.icon"/>
+      <el-icon v-if="ItemData.icon">
+        <component :is="ItemData.icon"/>
       </el-icon>
-      <span>{{ t(props.data.title) }}</span>
+      <span>{{ ItemData.title }}</span>
     </template>
-    <template v-for="item in props.data.children">
+    <template v-for="item in ItemData.children" :key="item.index">
       <MenuItem :data="item" />
     </template>
-    <el-menu-item :index="props.data.index" style="display: none;" />
+    <el-menu-item :index="ItemData.index" style="display: none;" />
   </el-sub-menu>
-  <el-menu-item v-else :index="props.data.index">
-    <el-icon v-if="props.data.icon">
-      <component :is="props.data.icon"/>
+  <el-menu-item v-else :index="ItemData.index">
+    <el-icon v-if="ItemData.icon">
+      <component :is="ItemData.icon"/>
     </el-icon>
-    <span>{{ t(props.data.title) }}</span>
+    <span>{{ ItemData.title }}</span>
   </el-menu-item>
 </template>
