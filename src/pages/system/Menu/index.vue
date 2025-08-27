@@ -1,22 +1,61 @@
 <template>
   <div class="menu-manager">
     <el-form :inline="true" :model="query">
-      <el-form-item label="菜单名称">
-        <el-input v-model="query.MenuName" placeholder="请输入菜单名称" clearable />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onQuery">查询</el-button>
-        <el-button type="primary" @click="openAdd">添加菜单</el-button>
-      </el-form-item>
+      <el-row :gutter="10">
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item label="菜单名称">
+            <el-input v-model="query.MenuName" placeholder="请输入菜单名称" clearable />
+          </el-form-item>
+        </el-col>
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item label="菜单ID">
+            <el-input v-model="query.MenuID" placeholder="请输入菜单ID" clearable />
+          </el-form-item>
+        </el-col>
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item label="中文名称">
+            <el-input v-model="query.ZhName" placeholder="请输入中文名称" clearable />
+          </el-form-item>
+        </el-col>
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item label="父级菜单ID">
+            <el-input v-model="query.ParentID" placeholder="请输入父级菜单ID" clearable />
+          </el-form-item>
+        </el-col>
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item label="路由">
+            <el-input v-model="query.Route" placeholder="请输入路由" clearable />
+          </el-form-item>
+        </el-col>
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item label="图标">
+            <el-input v-model="query.Icon" placeholder="请输入图标" clearable />
+          </el-form-item>
+        </el-col>
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item label="排序索引">
+            <el-input v-model="query.OrderIndex" placeholder="请输入排序索引" clearable />
+          </el-form-item>
+        </el-col>
+        <el-col :xs="8" :sm="8" :md="8" :lg="6" :xl="4">
+          <el-form-item>
+            <el-button type="primary" @click="onQuery">查询</el-button>
+            <el-button type="primary" @click="openAdd">添加菜单</el-button>
+          </el-form-item>
+        </el-col>
+      </el-row>
     </el-form>
-    <el-table :data="menuData" row-key="id" default-expand-all border style="    height: calc(100vh - 200px);">
-      <el-table-column prop="MenuName" label="菜单名称" width="180"></el-table-column>
-      <el-table-column prop="ZhName" label="中文名称" width="180"></el-table-column>
-      <el-table-column prop="Route" label="路由路径" width="180"></el-table-column>
-      <el-table-column prop="Icon" label="图标" width="180"></el-table-column>
-      <el-table-column label="操作" >
+    <el-table :data="menuData" row-key="id" default-expand-all border style="    height: calc(100vh - 230px);">
+      <el-table-column prop="MenuID" label="菜单ID"></el-table-column>
+      <el-table-column prop="MenuName" label="菜单名称" min-width="140"></el-table-column>
+      <el-table-column prop="ZhName" label="中文名称" min-width="120"></el-table-column>
+      <el-table-column prop="Route" label="路由路径" min-width="140"></el-table-column>
+      <el-table-column prop="Icon" label="图标" min-width="100"></el-table-column>
+      <el-table-column prop="ParentID" label="父级ID"></el-table-column>
+      <el-table-column prop="OrderIndex" label="索引"></el-table-column>
+      <el-table-column label="操作" width="150">
         <template #default="scope">
-          <el-button size="small" @click="openEditMenuDialog(scope.row)">编辑</el-button>
+          <el-button size="small" @click="openEdit(scope.row)">编辑</el-button>
           <el-button size="small" type="danger" @click="deleteMenu(scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -30,69 +69,49 @@
       @size-change="SizeChange"
       @current-change="CurrentChange"
     />
-    <el-dialog :title="dialogTitle" v-model="dialogVisible" width="50%">
-      <el-form ref="menuForm" :model="menuForm" label-width="120px">
-        <el-form-item label="菜单名称">
-          <el-input v-model="menuForm.name" placeholder="请输入菜单名称"></el-input>
-        </el-form-item>
-        <el-form-item label="中文名称">
-          <el-input v-model="menuForm.zhName" placeholder="请输入中文名称"></el-input>
-        </el-form-item>
-        <el-form-item label="路由路径">
-          <el-input v-model="menuForm.route" placeholder="请输入路由路径"></el-input>
-        </el-form-item>
-        <el-form-item label="图标">
-          <el-input v-model="menuForm.icon" placeholder="请输入图标类名"></el-input>
-        </el-form-item>
-        <el-form-item label="父菜单">
-          <el-select v-model="menuForm.parentID" placeholder="请选择父菜单">
-            <el-option
-              v-for="item in menuData"
-              :key="item.id"
-              :label="item.zhName"
-              :value="item.id"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-      </el-form>
-      <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="saveMenu">保存</el-button>
-      </template>
-    </el-dialog>
+    <MenuDialog :visible="dialogVisible" :title="dialogTitle" @onClose="closeDialog" :data="dialogData"/>
   </div>
 </template>
   
 <script setup>
-  import { ref } from 'vue';
-  import { ElMessage, ElMessageBox } from 'element-plus';
-  import { MenuList } from '@/apis/menu';
-  const menuData = ref([]);
-  const query = ref({
+import { ref } from 'vue';
+import { ElMessage, ElMessageBox } from 'element-plus';
+import MenuDialog from './MenuDialog.vue';
+import { MenuList,MenuDelete } from '@/apis/menu';
+const menuData = ref([]);
 
-  });
-  const pagination = ref({
-    total:0,
-    current:1,
-    pageSize:20,
-  }); 
+const query = ref({});
+const pagination = ref({
+  total:0,
+  current:1,
+  pageSize:20,
+});
+
 onBeforeMount(async() => {
   getMenuList()
 });
 
-const getMenuList = async() => { 
-  MenuList({
-    current:pagination.value.current,
-    pageSize:pagination.value.pageSize,
-  }).then(res => {
-    menuData.value = res.data;
-    pagination.value.total = res.total;
-    pagination.value.current = res.current;
-    pagination.value.pageSize = res.pageSize;
+const getMenuList = async() => {
+  return new Promise((resolve,reject) => {
+    MenuList({
+      ...query.value,
+      ...pagination.value,
+    }).then(res => {
+      menuData.value = res.data;
+      pagination.value.total = res.total;
+      pagination.value.current = res.current;
+      pagination.value.pageSize = res.pageSize;
+      resolve(res);
+    }).catch(err => {
+      reject(err);
+      ElMessage.error(err.message);
+    })
   });
 };
 const onQuery = () => {
-  getMenuList()
+  getMenuList().then((res) => {
+    ElMessage.success(res.message);
+  });
 };
 const SizeChange = (val) => {
   pagination.value.pageSize = val;
@@ -103,76 +122,47 @@ const CurrentChange = (val) => {
   getMenuList()
 }
 
-  const dialogVisible = ref(false);
-  const dialogTitle = ref('');
-  const menuForm = ref({
-    id: '',
-    name: '',
-    zhName: '',
-    route: '',
-    icon: '',
-    parentID: null,
-  });
+//弹窗
+const dialogVisible  = ref(false);
+const dialogTitle = ref('添加菜单');
+const dialogData = ref(null);
+const openAdd = () => {
+  dialogTitle.value = '添加菜单';
+  dialogVisible.value = true;
+};
   
-  const openAdd = () => {
-    dialogTitle.value = '添加菜单';
-    menuForm.value = {
-      id: '',
-      name: '',
-      zhName: '',
-      route: '',
-      icon: '',
-      parentID: null,
-    };
-    dialogVisible.value = true;
-  };
+const openEdit = (row) => {
+  dialogTitle.value = '编辑菜单';
+  dialogData.value = {...row};
+  dialogVisible.value = true;
+};
+const closeDialog = () => {
+  console.log('closeDialog');
+  dialogVisible.value = false;
+  dialogData.value={}
+  getMenuList()
+};
   
-  const openEditMenuDialog = (data) => {
-    dialogTitle.value = '编辑菜单';
-    menuForm.value = { ...data };
-    dialogVisible.value = true;
-  };
-  
-  const deleteMenu = (data) => {
-    ElMessageBox.confirm('确定要删除该菜单吗？', '提示', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
+const deleteMenu = (data) => {
+  ElMessageBox.confirm('确定要删除该菜单吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+  })
+  .then(() => {
+    MenuDelete({MenuID:data.MenuID}).then(res => {
+      ElMessage.success(res.message);
+    }).catch(err => {
+      ElMessage.error(err.message);
     })
-      .then(() => {
-        const index = menuData.value.findIndex((item) => item.id === data.id);
-        if (index !== -1) {
-          menuData.value.splice(index, 1);
-          ElMessage.success('删除成功');
-        }
-      })
-      .catch(() => {
-        ElMessage.info('已取消删除');
-      });
-  };
+    getMenuList()
+  })
+  .catch(() => {
+    ElMessage.info('已取消删除');
+  });
+};  
+</script>
   
-  const saveMenu = () => {
-    if (menuForm.value.id) {
-      // 编辑菜单
-      const index = menuData.value.findIndex((item) => item.id === menuForm.value.id);
-      if (index !== -1) {
-        menuData.value[index] = { ...menuForm.value };
-        ElMessage.success('编辑成功');
-      }
-    } else {
-      // 添加菜单
-      menuData.value.push({ ...menuForm.value });
-      ElMessage.success('添加成功');
-    }
-    dialogVisible.value = false;
-  };
-  </script>
-  
-  <style scoped>
+<style scoped>
 
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  </style>
+</style>

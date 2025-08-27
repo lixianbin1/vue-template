@@ -57,14 +57,7 @@ const pagination = ref({
 const dialogVisible  = ref(false);
 const dialogTitle = ref('新增');
 const dialogData = ref(null);
-const menuForm = reactive({
-  id: '',
-  name: '',
-  zhName: '',
-  route: '',
-  icon: '',
-  parentID: null,
-});
+
 onBeforeMount(async() => {
   getRoleList()
 });
@@ -102,6 +95,7 @@ const openEdit=(row)=>{
 }
 const closeAdd = () => {
   dialogVisible.value = false;
+  dialogData.value={}
 };
 
 const deleteMenu = (row) => {
