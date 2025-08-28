@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-manager">
+  <div class="role-manager">
     <el-form :inline="true" :model="query">
       <el-form-item label="角色名称">
         <el-input v-model="query.MenuName" placeholder="请输入角色名称" clearable />
@@ -9,7 +9,8 @@
         <el-button type="primary" @click="openAdd">添加</el-button>
       </el-form-item>
     </el-form>
-    <el-table :data="roleData" row-key="id" default-expand-all border style="height: calc(100vh - 200px);">
+    
+    <el-table :data="roleData" row-key="id" default-expand-all border style="height: calc(100vh - 230px);">
       <el-table-column prop="RoleID" label="角色ID"></el-table-column>
       <el-table-column prop="RoleName" label="角色名称"></el-table-column>
       <el-table-column prop="Status" label="状态" width="70">
@@ -25,6 +26,7 @@
         </template>
       </el-table-column>
     </el-table>
+
     <el-pagination
       v-model:current-page="pagination.current"
       v-model:page-size="pagination.pageSize"
@@ -34,7 +36,7 @@
       @size-change="SizeChange"
       @current-change="CurrentChange"
     />
-    <RoleDialog :visible="dialogVisible" :title="dialogTitle" @onClose="closeAdd" :data="dialogData"/>
+    <RoleDialog :visible="dialogVisible" :title="dialogTitle" @onClose="closeDialog" :data="dialogData"/>
   </div>
 </template>
   
@@ -42,7 +44,7 @@
 import { ref } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import RoleDialog from './RoleDialog.vue';
-import { RoleList } from '@/apis/role';
+import { RoleList,RoleDelete } from '@/apis/role';
 
 const roleData = ref([]);
 
@@ -63,19 +65,27 @@ onBeforeMount(async() => {
 });
 
 const getRoleList = async() => { 
-  RoleList({
-    current:pagination.value.current,
-    pageSize:pagination.value.pageSize,
-  }).then(res => { 
-    roleData.value = res.data;
-    pagination.value.total = res.total;
-    pagination.value.current = res.current;
-    pagination.value.pageSize = res.pageSize;
+  return new Promise((resolve,reject) => {
+    RoleList({
+      ...query.value,
+      ...pagination.value,
+    }).then(res => {
+      roleData.value = res.data;
+      pagination.value.total = res.total;
+      pagination.value.current = res.current;
+      pagination.value.pageSize = res.pageSize;
+      resolve(res);
+    }).catch(err => {
+      reject(err);
+      ElMessage.error(err.message);
+    })
   });
 };
 
 const onQuery = () => {
-  getRoleList()
+  getRoleList().then((res) => {
+    ElMessage.success(res.message);
+  });
 };
 const SizeChange = (val) => {
   pagination.value.pageSize = val;
@@ -86,21 +96,24 @@ const CurrentChange = (val) => {
   getRoleList()
 }
 const openAdd = () => {
+  dialogTitle.value = '新增角色';
   dialogVisible.value = true;
 };
-const openEdit=(row)=>{ 
+const openEdit = (row) => {
+  dialogTitle.value = '编辑角色';
+  dialogData.value = {...row};
   dialogVisible.value = true;
-  dialogTitle.value = '编辑';
-  dialogData.value = row;
-}
-const closeAdd = () => {
+};
+const closeDialog = () => {
+  console.log('closeDialog');
   dialogVisible.value = false;
   dialogData.value={}
+  getRoleList()
 };
 
 const deleteMenu = (row) => {
-  UserDelete({
-    UserID: row.UserID
+  RoleDelete({
+    RoleID: row.RoleID
   }).then((res) => {
     if (res.code == 200) {
       ElMessage.success(res.message)

@@ -11,6 +11,14 @@ export const RoleList = function (params) {
   })
 }
 
+export const RoleCreate = function (data) {
+  return require({
+    url: `${network}/${auto}/role/create`,
+    method: 'POST',
+    data,
+  })
+}
+
 export const RoleDelete = function (data) {
   return require({
     url: `${network}/${auto}/role/delete`,

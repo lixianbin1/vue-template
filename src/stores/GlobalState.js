@@ -25,6 +25,12 @@ export const getLocaleMenuTree = async()=>{
   }
   return useMenuTree.value
 }
+export const upLocaleMenuTree = async()=>{
+  const useMenuTree = useLocaleMenuTree()
+  const res = await MenuTree()
+  useMenuTree.value = res.data
+  return useMenuTree.value
+}
 
 
 //用户信息

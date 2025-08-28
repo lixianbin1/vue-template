@@ -9,7 +9,9 @@
       </el-form-item>
       <el-form-item label="父级菜单ID">
         <el-tree-select
+          clearable
           v-model="MenuData.ParentID"
+          check-strictly=true
           :data="treeData"
         />
       </el-form-item>
@@ -32,7 +34,7 @@
 
 <script setup>
 import { MenuADD,MenuUpdate } from '@/apis/menu';
-import { getLocaleMenuTree } from '@/stores/GlobalState';
+import { getLocaleMenuTree,upLocaleMenuTree } from '@/stores/GlobalState';
 const props = defineProps(['visible','title','data']);
 
 const treeData = ref([]);
@@ -87,6 +89,7 @@ const saveMenu = () => {
       } else {
         ElMessage.error(res.message)
       }
+      upLocaleMenuTree()
     });
   }else{
     MenuUpdate(MenuData).then((res) => {
@@ -97,6 +100,7 @@ const saveMenu = () => {
       } else {
         ElMessage.error(res.message)
       }
+      upLocaleMenuTree()
     });
   }
 };

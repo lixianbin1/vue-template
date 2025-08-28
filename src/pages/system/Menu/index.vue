@@ -124,10 +124,10 @@ const CurrentChange = (val) => {
 
 //弹窗
 const dialogVisible  = ref(false);
-const dialogTitle = ref('添加菜单');
+const dialogTitle = ref('新增菜单');
 const dialogData = ref(null);
 const openAdd = () => {
-  dialogTitle.value = '添加菜单';
+  dialogTitle.value = '新增菜单';
   dialogVisible.value = true;
 };
   
@@ -137,7 +137,6 @@ const openEdit = (row) => {
   dialogVisible.value = true;
 };
 const closeDialog = () => {
-  console.log('closeDialog');
   dialogVisible.value = false;
   dialogData.value={}
   getMenuList()
