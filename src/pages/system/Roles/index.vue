@@ -105,7 +105,6 @@ const openEdit = (row) => {
   dialogVisible.value = true;
 };
 const closeDialog = () => {
-  console.log('closeDialog');
   dialogVisible.value = false;
   dialogData.value={}
   getRoleList()

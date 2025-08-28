@@ -9,25 +9,22 @@
         <el-button type="primary" @click="openAdd">添加</el-button>
       </el-form-item>
     </el-form>
-    <el-table :data="menuData" row-key="id" default-expand-all border style="height: calc(100vh - 200px);">
+    <el-table :data="tableData" row-key="id" default-expand-all border style="height: calc(100vh - 200px);">
       <el-table-column prop="UserID" label="用户ID"></el-table-column>
       <el-table-column prop="UserName" label="用户名称"></el-table-column>
-      <el-table-column prop="UserRoles" label="用户角色">
-        <template #default="scope">
-          <el-tag v-for="item in scope.row.UserRoles" :key="item">{{item}}</el-tag>
-        </template>
-      </el-table-column>
+      <el-table-column prop="Roles" label="用户角色"/>
       <el-table-column prop="Email" label="用户邮箱" width="180"></el-table-column>
       <el-table-column prop="Status" label="状态" width="70">
         <template #default="scope">
-          <el-switch v-if="scope.row.Email !=='xianbin@qq.com'" v-model="scope.row.Status" active-value="1"></el-switch>
+          <el-switch v-if="!scope.row.Roles?.includes('管理员')" v-model="scope.row.Status" active-value="1"></el-switch>
           <span v-else></span>
         </template>
       </el-table-column>
       <el-table-column label="操作" >
         <template #default="scope">
-          <el-button size="small" @click="openEdit(scope.row)">编辑</el-button>
-          <el-button size="small" type="danger" @click="deleteMenu(scope.row)">删除</el-button>
+          <el-button v-if="!scope.row.Roles?.includes('管理员')" size="small" @click="openEdit(scope.row)">编辑</el-button>
+          <el-button v-if="!scope.row.Roles?.includes('管理员')" size="small" type="danger" @click="deleteMenu(scope.row)">删除</el-button>
+          <span v-else></span>
         </template>
       </el-table-column>
     </el-table>
@@ -40,7 +37,7 @@
       @size-change="SizeChange"
       @current-change="CurrentChange"
     />
-    <UserDialog :visible="dialogVisible" :title="dialogTitle" @onClose="closeAdd" :data="dialogData"/>
+    <UserDialog :visible="dialogVisible" :title="dialogTitle" @onClose="closeDialog" :data="dialogData"/>
   </div>
 </template>
   
@@ -50,7 +47,7 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 import UserDialog from './UserDialog.vue';
 import { UserList,UserDelete } from '@/apis/user';
 
-const menuData = ref([]);
+const tableData = ref([]);
 
 const query = ref({
 
@@ -63,14 +60,6 @@ const pagination = ref({
 const dialogVisible  = ref(false);
 const dialogTitle = ref('新增');
 const dialogData = ref(null);
-const menuForm = reactive({
-  id: '',
-  name: '',
-  zhName: '',
-  route: '',
-  icon: '',
-  parentID: null,
-});
 onBeforeMount(async() => {
   getUserList()
 });
@@ -80,7 +69,7 @@ const getUserList = async() => {
     current:pagination.value.current,
     pageSize:pagination.value.pageSize,
   }).then(res => { 
-    menuData.value = res.data;
+    tableData.value = res.data;
     pagination.value.total = res.total;
     pagination.value.current = res.current;
     pagination.value.pageSize = res.pageSize;
@@ -99,17 +88,19 @@ const CurrentChange = (val) => {
   getUserList()
 }
 const openAdd = () => {
+  dialogTitle.value = '新增用户';
   dialogVisible.value = true;
 };
 const openEdit=(row)=>{ 
   dialogVisible.value = true;
-  dialogTitle.value = '编辑';
+  dialogTitle.value = '编辑用户';
   dialogData.value = row;
 }
-const closeAdd = () => {
+const closeDialog = () => {
   dialogVisible.value = false;
+  dialogData.value={}
+  getUserList()
 };
-
 const deleteMenu = (row) => {
   UserDelete({
     UserID: row.UserID
