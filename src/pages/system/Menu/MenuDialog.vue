@@ -62,7 +62,7 @@ watch(() => props.data, (newValue) => {
     MenuData.OrderIndex = newValue.OrderIndex;
   }
 });
-const emit = defineEmits(["onClose", "saveMenu"]);
+const emit = defineEmits(["onClose", "saveData"]);
 
 const closeDialog = () => {
   emit("onClose");
@@ -86,6 +86,7 @@ const saveMenu = () => {
         ElMessage.success(res.message)
         clearMenu()
         visible.value = false
+        emit("saveData");
       } else {
         ElMessage.error(res.message)
       }
@@ -97,6 +98,7 @@ const saveMenu = () => {
         ElMessage.success(res.message)
         clearMenu()
         visible.value = false
+        emit("saveData");
       } else {
         ElMessage.error(res.message)
       }

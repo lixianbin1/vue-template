@@ -10,11 +10,11 @@ export const DynamicMenu = function (params) {
     params,
   })
 }
-export const MenuList = function (params) {
+export const MenuList = function (data) {
   return require({
     url: `${network}/${auto}/menu/list`,
-    method: 'GET',
-    params,
+    method: 'POST',
+    data,
   })
 }
 
