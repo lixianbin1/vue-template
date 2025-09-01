@@ -50,3 +50,11 @@ export const UserDelete = function (data) {
     data,
   })
 }
+
+export const UserUpdate = function (data) {
+  return require({
+    url: `${network}/${auto}/user/updata`,
+    method: 'POST',
+    data,
+  })
+}

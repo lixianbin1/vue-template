@@ -29,13 +29,13 @@
     </el-form>
     <template #footer>
       <el-button @click="visible = false">取消</el-button>
-      <el-button type="primary" @click="saveMenu()">保存</el-button>
+      <el-button type="primary" @click="saveUser()">保存</el-button>
     </template>
   </el-dialog>
 </template>
 
 <script setup>
-import { UserAdd } from '@/apis/user';
+import { UserAdd,UserUpdate } from '@/apis/user';
 import { getLocaleRoles } from '@/stores/GlobalState';
 const props = defineProps(['visible','title','data']);
 
@@ -55,11 +55,12 @@ watch(() => props.data, (newValue) => {
   if(newValue){
     UserData.Email = newValue.Email;
     UserData.Password = newValue.Password;
+    UserData.UserID = newValue.UserID;
     UserData.UserName = newValue.UserName;
     UserData.RoleID = newValue.RoleID;
   }
 });
-const emit = defineEmits(["onClose", "saveMenu"]);
+const emit = defineEmits(["onClose", "saveData"]);
 
 const closeDialog = () => {
   emit("onClose");
@@ -75,24 +76,26 @@ const clearData = () => {
   UserData.UserName = '';
   UserData.RoleID = [];
 }
-const saveMenu = () => {
+const saveUser = async() => {
   if(props.title == '新增用户'){
-    UserAdd(UserData).then((res) => {
+    await UserAdd(UserData).then((res) => {
       if (res.code == 200) {
         ElMessage.success(res.message)
         clearData()
         visible.value = false
+        emit("saveData");
       } else {
         ElMessage.error(res.message)
       }
       upLocaleMenuTree()
     });
   }else{
-    UserUpdate(UserData).then((res) => {
+    await UserUpdate(UserData).then((res) => {
       if (res.code == 200) {
         ElMessage.success(res.message)
         clearData()
         visible.value = false
+        emit("saveData");
       } else {
         ElMessage.error(res.message)
       }

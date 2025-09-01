@@ -82,6 +82,7 @@
 <script setup>
 import { ref } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
+import { upLocaleMenus,upLocaleMenuTree } from '@/stores/GlobalState';
 import MenuDialog from './MenuDialog.vue';
 import { MenuList,MenuDelete } from '@/apis/menu';
 
@@ -143,6 +144,8 @@ const deleteMenu = (data) => {
       ElMessage.error(err.message);
     })
     getMenuList()
+    upLocaleMenus()
+    upLocaleMenuTree()
   })
   .catch(() => {
     ElMessage.info('已取消删除');
@@ -171,6 +174,7 @@ const dialogData = ref(null);
 const openAdd = () => {
   dialogTitle.value = '新增菜单';
   dialogVisible.value = true;
+  console.log(dialogVisible.value)
 };
   
 const openEdit = (row) => {

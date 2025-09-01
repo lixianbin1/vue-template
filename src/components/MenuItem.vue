@@ -3,6 +3,7 @@
 const props = defineProps(['data'])
 const { t } = useI18n()
 const ItemData = ref(props.data)
+console.log(1111,ItemData)
 </script>
 
 <template>

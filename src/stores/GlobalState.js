@@ -1,5 +1,5 @@
 import { RoleList } from '@/apis/role';
-import { MenuTree } from '@/apis/menu';
+import { MenuTree,DynamicMenu } from '@/apis/menu';
 
 //角色下拉
 export const useLocaleRoles = createGlobalState(()=>{
@@ -14,6 +14,7 @@ export const getLocaleRoles = async()=>{
   return useRoles.value
 }
 
+//菜单下拉
 export const useLocaleMenuTree = createGlobalState(()=>{
   return useStorage('menuTree',[],sessionStorage)
 })
@@ -30,6 +31,17 @@ export const upLocaleMenuTree = async()=>{
   const res = await MenuTree()
   useMenuTree.value = res.data
   return useMenuTree.value
+}
+
+//菜单列表
+export const useLocaleMenus = createGlobalState(()=>{
+  return useStorage('menuList',[],sessionStorage)
+})
+export const upLocaleMenus = async()=>{
+  const useMenus = useLocaleMenus()
+  const res = await DynamicMenu()
+  useMenus.value = res.data
+  return useMenus.value
 }
 
 

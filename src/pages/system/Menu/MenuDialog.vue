@@ -11,7 +11,7 @@
         <el-tree-select
           clearable
           v-model="MenuData.ParentID"
-          check-strictly=true
+          check-strictly
           :data="treeData"
         />
       </el-form-item>
@@ -34,17 +34,17 @@
 
 <script setup>
 import { MenuADD,MenuUpdate } from '@/apis/menu';
-import { getLocaleMenuTree,upLocaleMenuTree } from '@/stores/GlobalState';
+import {upLocaleMenus, upLocaleMenuTree,useLocaleMenuTree } from '@/stores/GlobalState';
 const props = defineProps(['visible','title','data']);
 
-const treeData = ref([]);
+const treeData = useLocaleMenuTree();
 const MenuData = reactive({
   MenuName: '',
   ZhName: '',
   ParentID: '',
   Route: '',
   Icon: '',
-  OrderIndex: '',
+  OrderIndex: 1,
 });
 const visible = ref(false);
 watch(() => props.visible, (newValue) => {
@@ -76,12 +76,9 @@ const clearMenu = () => {
   MenuData.Icon = '';
   MenuData.OrderIndex = 1;
 };
-onBeforeMount(async() => {
-  treeData.value  = await getLocaleMenuTree();
-});
-const saveMenu = () => {
+const saveMenu = async () => {
   if(props.title == '新增菜单'){
-    MenuADD(MenuData).then((res) => {
+    await MenuADD(MenuData).then((res) => {
       if (res.code == 200) {
         ElMessage.success(res.message)
         clearMenu()
@@ -90,10 +87,9 @@ const saveMenu = () => {
       } else {
         ElMessage.error(res.message)
       }
-      upLocaleMenuTree()
     });
   }else{
-    MenuUpdate(MenuData).then((res) => {
+    await MenuUpdate(MenuData).then((res) => {
       if (res.code == 200) {
         ElMessage.success(res.message)
         clearMenu()
@@ -102,8 +98,9 @@ const saveMenu = () => {
       } else {
         ElMessage.error(res.message)
       }
-      upLocaleMenuTree()
     });
   }
+  upLocaleMenus()
+  upLocaleMenuTree()
 };
 </script>

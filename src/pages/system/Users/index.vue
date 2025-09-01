@@ -37,7 +37,7 @@
       @size-change="SizeChange"
       @current-change="CurrentChange"
     />
-    <UserDialog :visible="dialogVisible" :title="dialogTitle" @onClose="closeDialog" :data="dialogData"/>
+    <UserDialog :visible="dialogVisible" :title="dialogTitle" @onClose="closeDialog" @saveData="saveData" :data="dialogData"/>
   </div>
 </template>
   
@@ -49,17 +49,15 @@ import { UserList,UserDelete } from '@/apis/user';
 
 const tableData = ref([]);
 
-const query = ref({
-
-});
-const pagination = ref({
-  total:0,
-  current:1,
-  pageSize:20,
-}); 
 const dialogVisible  = ref(false);
 const dialogTitle = ref('新增');
 const dialogData = ref(null);
+
+//查询
+const query = ref({});
+const onQuery = () => {
+  getUserList()
+};
 onBeforeMount(async() => {
   getUserList()
 });
@@ -76,9 +74,12 @@ const getUserList = async() => {
   });
 };
 
-const onQuery = () => {
-  getUserList()
-};
+//分页
+const pagination = ref({
+  total:0,
+  current:1,
+  pageSize:20,
+}); 
 const SizeChange = (val) => {
   pagination.value.pageSize = val;
   getUserList()
@@ -87,6 +88,27 @@ const CurrentChange = (val) => {
   pagination.value.current = val;
   getUserList()
 }
+
+const deleteMenu = (row) => {
+  ElMessageBox.confirm('确定要删除该用户吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+  })
+  .then(() => {
+    UserDelete({UserID: row.UserID}).then(res => {
+      ElMessage.success(res.message);
+    }).catch(err => {
+      ElMessage.error(err.message);
+    })
+    getUserList()
+  })
+  .catch(() => {
+    ElMessage.info('已取消删除');
+  });
+}
+
+//弹窗
 const openAdd = () => {
   dialogTitle.value = '新增用户';
   dialogVisible.value = true;
@@ -99,21 +121,10 @@ const openEdit=(row)=>{
 const closeDialog = () => {
   dialogVisible.value = false;
   dialogData.value={}
+};
+const saveData = (data) => {
   getUserList()
 };
-const deleteMenu = (row) => {
-  UserDelete({
-    UserID: row.UserID
-  }).then((res) => {
-    if (res.code == 200) {
-      ElMessage.success(res.message)
-    } else {
-      ElMessage.error(res.message)
-    }
-  }).finally(() => {
-    getUserList()
-  })
-}
 </script>
   
 <style scoped>
