@@ -11,7 +11,7 @@
   "dependencies": {
     "@vueuse/core": "^13.7.0",
     "axios": "^1.11.0",
-    "element-plus": "^2.10.7",
+    "element-plus": "^2.11.4",
     "file-saver": "^2.0.5",
     "imgzoom-li": "^0.9.5",
     "jszip": "^3.10.1",
